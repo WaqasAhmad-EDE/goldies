@@ -1,0 +1,342 @@
+/* Goldies Fast Food - Spicy Red & Black Theme */
+html, body {
+    height: 100%;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: url('https://www.lieferprofi.de/shops/goldies/images/angebot.jpg') center center/cover no-repeat fixed;
+    margin: 0;
+    color: #fff;
+    position: relative;
+}
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(20, 10, 10, 0.65); /* dark shade overlay */
+    z-index: 0;
+    pointer-events: none;
+}
+body > * {
+    position: relative;
+    z-index: 1;
+}
+header {
+    background: transparent;
+    padding: 2rem 1rem 1rem 1rem;
+    text-align: center;
+    box-shadow: none;
+}
+.logo {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 auto 1rem auto;
+    display: block;
+    box-shadow: 0 4px 24px #ff2a2a55, 0 1px 8px #0008;
+    background: #fff;
+    border: 4px solid #fff3;
+    transition: transform 0.2s;
+}
+.logo:hover {
+    transform: scale(1.05) rotate(-2deg);
+    box-shadow: 0 8px 32px #ff2a2a99, 0 2px 12px #000a;
+}
+h1 {
+    margin: 0.2rem 0 0.3rem 0;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 2px 2px 8px #ff2a2a88, 0 0 2px #fff8;
+}
+.subtitle {
+    color: #ffb3b3;
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 2px 2px 8px #000a, 0 0 2px #fff8;
+}
+main {
+    flex: 1 0 auto;
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+#menu {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+}
+.menu-category {
+    background: #222;
+    border-radius: 1rem;
+    box-shadow: 0 2px 12px #ff2a2a33;
+    padding: 1.2rem 1rem 1.5rem 1rem;
+    border: 2px solid #ff2a2a;
+}
+.menu-category h2 {
+    margin-top: 0;
+    color: #ff2a2a;
+    font-size: 1.4rem;
+    border-bottom: 1px solid #ff2a2a;
+    padding-bottom: 0.3rem;
+    letter-spacing: 1px;
+}
+.menu-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin: 1.2rem 0;
+}
+.menu-item img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 0.7rem;
+    box-shadow: 0 1px 6px #ff2a2a55;
+    border: 2px solid #ff2a2a;
+    background: #fff;
+}
+.menu-item-details {
+    flex: 1;
+}
+.menu-item-title {
+    font-weight: bold;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    color: #ff2a2a;
+}
+.menu-item-desc {
+    color: #ffb3b3;
+    font-size: 0.97rem;
+    margin-bottom: 0.2rem;
+}
+.menu-item-price {
+    color: #fff;
+    background: #ff2a2a;
+    border-radius: 0.4rem;
+    padding: 0.1rem 0.5rem;
+    font-weight: bold;
+    font-size: 1.05rem;
+    display: inline-block;
+    margin-top: 0.2rem;
+    box-shadow: 0 1px 4px #ff2a2a44;
+}
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    background: #1a1a1a;
+    color: #ffb3b3;
+    font-size: 0.98rem;
+    border-top: 1px solid #ff2a2a;
+}
+footer a {
+    color: #ff2a2a;
+    text-decoration: underline;
+}
+#main-categories {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    padding: 0.7rem 3.2rem 0.7rem 3.2rem; /* More space for buttons */
+    box-shadow: none;
+    border-bottom: none;
+    overflow-x: visible;
+    box-shadow: 0 2px 12px #0005;
+    background: rgba(30, 20, 20, 0.65);
+}
+.category-list {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center; /* Keep items vertically centered */
+    gap: 1.2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0 0.5rem;
+    justify-content: flex-start;
+    overflow-x: auto;
+    scrollbar-width: none; /* Hide scrollbar for Firefox */
+    backdrop-filter: blur(6px);
+    border-radius: 1.5rem;
+    padding: 0.4rem 0.5rem;
+}
+.category-list::-webkit-scrollbar {
+    height: 0 !important;
+    display: none !important; /* Hide scrollbar for Chrome, Safari */
+}
+#main-categories::-webkit-scrollbar {
+    height: 0 !important;
+    display: none !important;
+}
+.category-scroll-btn, .category-hamburger-btn {
+    background: rgba(255, 42, 42, 0.92);
+    box-shadow: 0 2px 8px #0008;
+    border: none;
+    color: #fff;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 3;
+    opacity: 0.95;
+    transition: opacity 0.2s, background 0.2s;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#category-scroll-left {
+    left: 0.7rem;
+}
+#category-scroll-right {
+    right: 0.7rem;
+}
+#main-categories:hover .category-scroll-btn {
+    opacity: 1;
+}
+.category-list li {
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+    padding: 0.3rem 0.8rem;
+    border-radius: 0.4rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    flex: 0 0 auto;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.category-hamburger-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ff2a2a;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 4;
+    box-shadow: 0 2px 8px #0008;
+    opacity: 0.85;
+    transition: opacity 0.2s, background 0.2s;
+}
+.category-hamburger-btn:hover {
+    opacity: 1;
+    background: #d41a1a;
+}
+.category-dialog-backdrop {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+}
+.category-dialog-content {
+    position: fixed;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    background: #222;
+    color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 4px 32px #000a;
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    z-index: 1001;
+    min-width: 320px;
+    max-width: 90vw;
+    max-height: 80vh;
+    overflow-y: auto;
+    text-align: center;
+}
+.category-dialog-content h3 {
+    margin-top: 0;
+    color: #ff2a2a;
+    margin-bottom: 1.2rem;
+}
+.category-dialog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+.category-dialog-item {
+    background: #7a0a16;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.7rem 0.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    box-shadow: 0 1px 6px #ff2a2a33;
+}
+.category-dialog-item:hover {
+    background: #ff2a2a;
+    color: #fff;
+}
+.category-dialog-close {
+    background: #ff2a2a;
+    color: #fff;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background 0.2s;
+}
+.category-dialog-close:hover {
+    background: #d41a1a;
+}
+@media (max-width: 600px) {
+    h1 { font-size: 1.5rem; }
+    #menu { grid-template-columns: 1fr; }
+    .category-dialog-content {
+        padding: 1rem 0.5rem 1rem 0.5rem;
+        min-width: 0;
+    }
+    .category-dialog-grid {
+        grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    }
+}
+@media (max-width: 700px) {
+    .category-list {
+        gap: 0.7rem;
+        font-size: 0.95rem;
+    }
+    #main-categories {
+        padding: 0.5rem 2.2rem 0.5rem 2.2rem;
+    }
+    .category-scroll-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1.1rem;
+    }
+    #category-scroll-left {
+        left: 0.3rem;
+    }
+    #category-scroll-right {
+        right: 0.3rem;
+    }
+}
