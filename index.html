@@ -40,13 +40,28 @@
         <button id="category-scroll-right" class="category-scroll-btn" aria-label="Nach rechts scrollen">&#8594;</button>
     </nav>
     <main>
-        <section id="menu">
+        <div id="menu">
             <!-- Menü wird hier dynamisch eingefügt -->
-        </section>
+        </div>
     </main>
     <footer>
         <p>© 2025 Goldies</p>
     </footer>
+
+    <!-- Modal for item details -->
+    <div id="item-modal" class="item-modal" style="display:none;">
+        <div class="item-modal-backdrop"></div>
+        <div class="item-modal-content">
+            <button class="item-modal-close" aria-label="Schließen">&times;</button>
+            <div class="item-modal-slideshow">
+                <!-- Slideshow images will be injected here -->
+            </div>
+            <div class="item-modal-details">
+                <!-- Details will be injected here -->
+            </div>
+            <button class="item-modal-cart-btn">In den Warenkorb</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
