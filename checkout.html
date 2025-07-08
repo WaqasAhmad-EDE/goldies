@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stripe Payment Example</title>
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f2f5;
+        }
+        .container {
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button {
+            background-color: #6772e5;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #5469d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Purchase Product X</h1>
+        <p>Price: $10.00</p>
+        <button id="checkout-button">Checkout</button>
+    </div>
+
+    <script type="text/javascript">
+        // Replace with your actual publishable key
+        // You can find this in your Stripe Dashboard: Developers -> API keys
+        const stripe = Stripe('pk_test_51OXDbEJjy4k4Mt2HrOlhoW8bW0pKxSVYtZF5CtvrUsCmXrB8QoXMLmlV3rz751clfRafRAFws6FNXit6I6MelOj200uMBo68Wh'); 
+
+        const checkoutButton = document.getElementById('checkout-button');
+
+        checkoutButton.addEventListener('click', async () => {
+            try {
+                // 1. Request a Checkout Session ID from your server
+                const response = await fetch('http://localhost:3000/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        // priceId: 'price_12345', // Replace with your actual Stripe Price ID
+                        // Or, you can pass product details like name, amount, currency if not using Price Objects
+                        productName: 'My Awesome Product',
+                        amount: 1000, // Amount in cents ($10.00)
+                        currency: 'usd'
+                    })
+                });
+
+                const session = await response.json();
+
+                if (session.error) {
+                    alert(session.error);
+                    return;
+                }
+
+                // 2. Redirect to Stripe Checkout
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id,
+                });
+
+                if (result.error) {
+                    // If `redirectToCheckout` fails due to a browser or network error,
+                    // display the localized error message to your customer.
+                    alert(result.error.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred during checkout. Please try again.');
+            }
+        });
+    </script>
+</body>
+</html>
